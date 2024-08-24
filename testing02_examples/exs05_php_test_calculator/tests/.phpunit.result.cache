@@ -1,0 +1,1 @@
+{"version":1,"defects":{"StackTest::test_sumar":7,"StackTest::sumar#data set 4":7},"times":{"StackTest::test_sumar":0.001,"StackTest::sumar":0.001,"StackTest::sumar#data set 1":0.001,"StackTest::sumar#data set 2":0.001,"StackTest::sumar#data set 3":0.001,"StackTest::sumar#data set 4":0.003}}
