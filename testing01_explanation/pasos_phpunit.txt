@@ -155,4 +155,20 @@ ________________________________________________________________________________
 -- VÍDEO 04: Configurando PHPUnit xml
 _____________________________________________________________________________________
 
+24. Crear el archivo 'phpunit.xml' en la carpeta 'tests', de la siguiente forma:
 
+            <?xml version="1.0" encoding="UTF-8"?>
+            <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/|version|/phpunit.xsd">
+               <testsuites>
+                  <testsuite name="unit">
+                        <directory phpVersion="8.2.12" phpVersionOperator=">=">unit</directory>
+                  </testsuite>
+
+                  <testsuite name="integration">
+                        <directory phpVersion="8.2.12" phpVersionOperator=">=">integration</directory>
+                  </testsuite>
+               </testsuites>
+            </phpunit>
+
+25. Ejecutar la prueba: ./phpunit.phar --testdox
