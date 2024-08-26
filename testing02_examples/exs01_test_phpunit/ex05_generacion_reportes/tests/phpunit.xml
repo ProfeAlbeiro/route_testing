@@ -5,9 +5,12 @@
         <testsuite name="unit">
             <directory phpVersion="8.2.12" phpVersionOperator=">=">unit</directory>
         </testsuite>
-
         <testsuite name="integration">
             <directory phpVersion="8.2.12" phpVersionOperator=">=">integration</directory>
         </testsuite>
     </testsuites>
+    <logging>        
+        <testdoxHtml outputFile="report/testdox.html"/>
+        <testdoxText outputFile="report/testdox.txt"/>
+    </logging>
 </phpunit>
