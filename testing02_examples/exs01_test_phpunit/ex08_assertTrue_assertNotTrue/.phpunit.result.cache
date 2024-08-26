@@ -1,0 +1,1 @@
+{"version":1,"defects":{"SomeClassTest::exampleSome":7,"AssertTrueClassTest::assertTrueTest":7,"AssertTrueClassTest::assertNotTrueTest":7},"times":{"SomeClassTest::exampleSome":0.003,"AssertTrueClassTest::assertTrueTest":0.016,"AssertTrueClassTest::assertNotTrueTest":0.001}}

@@ -1,0 +1,7 @@
+Assert True Class
+ [x] Prueba de assertTrue
+ [x] Prueba de assertNotTrue
+
+Some Class
+ [x] Ejemplo de assertionsSame
+
