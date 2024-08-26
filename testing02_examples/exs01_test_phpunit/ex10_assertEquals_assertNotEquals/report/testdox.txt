@@ -1,3 +1,7 @@
+Assert Equals Class
+ [x] Prueba de assertEquals con Fechas: Igual
+ [ ] Prueba de assertEquals con archivos: Igual
+
 Assert Same Class
  [x] Prueba de assertSame: Identico
  [x] Prueba de assertNotSame: No es Identico

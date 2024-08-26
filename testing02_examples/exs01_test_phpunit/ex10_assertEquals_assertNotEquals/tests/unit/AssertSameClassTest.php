@@ -11,7 +11,7 @@ final class AssertSameClassTest extends TestCase {
     public function assertSameTest(): void {
         $expected = "Hola";
         $actual = "Hola";
-        $this->assertSame($expected, $actual, "Los valores no son iguales");        
+        $this->assertSame($expected, $actual, "Los valores no son identicos");
     }
     
     #[Test]
@@ -19,7 +19,7 @@ final class AssertSameClassTest extends TestCase {
     public function assertNotSameTest(): void {
         $expected = new stdClass;
         $actual = new stdClass;
-        $this->assertNotSame($expected, $actual, "Los objetos son iguales");
+        $this->assertNotSame($expected, $actual, "Los objetos son identicos");
     }
 
 }

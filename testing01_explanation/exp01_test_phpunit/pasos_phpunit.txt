@@ -362,7 +362,7 @@ ________________________________________________________________________________
             public function assertSameTest(): void {
                   $expected = "Hola";
                   $actual = "Hola";
-                  $this->assertSame($expected, $actual, "Los valores no son iguales");        
+                  $this->assertSame($expected, $actual, "Los valores no son identicos");
             }
             
             #[Test]
@@ -370,7 +370,7 @@ ________________________________________________________________________________
             public function assertNotSameTest(): void {
                   $expected = new stdClass;
                   $actual = new stdClass;
-                  $this->assertNotSame($expected, $actual, "Los objetos son iguales");
+                  $this->assertNotSame($expected, $actual, "Los objetos son identicos");
             }
 
       }
@@ -379,11 +379,37 @@ ________________________________________________________________________________
 
 ___________________________________________________________________________________________________________________
 
--- VÍDEO 10: AssertEquals en PHPUnit
+-- VÍDEO 10: AssertEquals y AssertNotEquals en PHPUnit
 ___________________________________________________________________________________________________________________
 
-60. Crear el archivo 'AssertEqualsTest.php' en la carpeta 'unit', con el siguiente código:
+60. Crear el archivo 'AssertEqualsClassTest.php' en la carpeta 'unit', con el siguiente código:
 
+      <?php declare(strict_types=1);
+
+      use PHPUnit\Framework\Attributes\Test;
+      use PHPUnit\Framework\Attributes\TestDox;
+      use PHPUnit\Framework\TestCase;
+
+      final class AssertEqualsClassTest extends TestCase {
       
+            #[Test]
+            #[TestDox('Prueba de assertEquals con Fechas: Igual')]
+            public function assertEqualsDatesTest(): void {
+                  $expected = new DateTimeImmutable("2024-04-01 15:00:35");
+                  $actual = new DateTimeImmutable("2024-04-01 15:00:35");
+                  $this->assertEquals($expected, $actual, "Las fechas no son iguales");
+            }
+            
+            #[Test]
+            #[TestDox('Prueba de assertEquals con archivos: Igual')]
+            public function assertEqualsFilesTest(): void {
+                  $expected = new DOMDocument;
+                  $expected->loadXML("<foo><bar/></foo>");
+                  $actual = new DOMDocument;
+                  $actual->loadXML("<bar><foo/></bar>");                  
+                  $this->assertEquals($expected, $actual, "Los archivos no son iguales");
+            }
+
+      }
 
 61. Ejecutar la prueba (bash): ./build-tests.sh
