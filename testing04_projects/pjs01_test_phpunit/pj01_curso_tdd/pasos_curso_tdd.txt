@@ -1,0 +1,129 @@
+
+TUTORIAL PHPUNIT TESTING: https://www.youtube.com/playlist?list=PLRHPC9shBXl3IkZ4aNXLMsjBFCFFTHDQQ
+
+___________________________________________________________________________________________________________________
+
+-- VÍDEO 01: Prueba Unitaria con PHPUnit y TDD
+___________________________________________________________________________________________________________________
+
+01. Crear carpeta raíz en cualquier lugar del explorador (Ejemplo: 'pj01_curso_tdd')
+02. Abrir la carpeta raíz con Visual Studio Code
+03. Abrir una terminal: ctrl + ñ (Se sugiere 'Git Bash')
+04. Ejecutar (bash): composer init
+05. Ejecutar (bash): Package name (<vendor>/<name>) [villa/pj01_curso_tdd]:: [Enter]
+06. Ejecutar (bash): Description []: [Enter]
+07. Ejecutar (bash): Author [ProfeAlbeiro <profealbeiro2020@gmail.com>, n to skip]: Albeiro Ramos
+08. Ejecutar (bash): Minimum Stability []: [Enter]
+08. Ejecutar (bash): Package Type (e.g. library, project, metapackage, composer-plugin) []: [Enter]
+09. Ejecutar (bash): License []: [Enter]
+10. Ejecutar (bash): Would you like to define your dependencies (require) interactively [yes]? no
+11. Ejecutar (bash): Would you like to define your dev dependencies (require-dev) interactively [yes]? yes
+12. Ejecutar (bash): Search for a package: phpunit
+13. Ejecutar (bash): Enter package # to add, or the complete package name if it is not listed: 0
+14. Ejecutar (bash): Enter the version constraint to require (or leave blank to use the latest version): [Enter]
+15. Ejecutar (bash): Search for a package: [Enter]
+16. Ejecutar (bash): Add PSR-4 autoload mapping? Maps namespace ""Villa\Pj01CursoTdd" to the entered 
+                     relative path. [src/, n to skip]: [Enter]
+
+                        {
+                              "name": "villa/pj01_curso_tdd",
+                              "require-dev": {
+                                    "phpunit/phpunit": "^11.3"
+                              },
+                              "autoload": {
+                                    "psr-4": {
+                                          "Villa\\Pj01CursoTdd\\": "src/"
+                                    }
+                              },
+                              "authors": [
+                                    {
+                                          "name": "Albeiro Ramos"
+                                    }
+                              ],
+                              "require": {}
+                        }
+
+17. Ejecutar (bash): Do you confirm generation [yes]? [Enter]
+18. Ejecutar (bash): Would you like to install dependencies now [yes]? [Enter]
+19. Modificar el archivo 'composer.json' de la siguiente forma:
+
+      {
+            "name": "villa/pj01_curso_tdd",
+            "require-dev": {
+                  "phpunit/phpunit": "^11.3"
+            },
+            "autoload": {
+                  "psr-4": {
+                        "Src\\": "src/"
+                  }
+            },
+            "authors": [
+                  {
+                        "name": "Albeiro Ramos"
+                  }
+            ],
+            "require": {}
+      }
+
+20. Ejecutar (bash): composer dump-autoload
+    Se hace para que composer reconozca que el directorio 'src' como namespace
+21. Crear la carpeta 'tests' en la carpeta raíz y en su interior, las carpetas: 'unit' e 'integration'
+22. Crear el archivo 'phpunit.xml' en la carpeta raíz, con el siguiente código:
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/|version|/phpunit.xsd">
+            <testsuites>
+                  <testsuite name="unit">
+                        <directory phpVersion="8.2.12" phpVersionOperator=">=">unit</directory>
+                  </testsuite>
+                  <testsuite name="integration">
+                        <directory phpVersion="8.2.12" phpVersionOperator=">=">integration</directory>
+                  </testsuite>
+            </testsuites>
+            <logging>        
+                  <testdoxHtml outputFile="report/testdox.html"/>
+                  <testdoxText outputFile="report/testdox.txt"/>
+            </logging>
+      </phpunit>
+
+23. Crear el archivo 'build.tests.sh' con el siguiente código:
+
+      #!/bin/bash
+      ./vendor/phpunit/phpunit/phpunit --testdox tests
+
+24. Crear el archivo 'FirstTestClassTest.php' en la carpeta 'unit', con el siguiente código:
+
+      <?php declare(strict_types=1);
+
+      use PHPUnit\Framework\Attributes\Test;
+      use PHPUnit\Framework\Attributes\TestDox;
+      use PHPUnit\Framework\Attributes\DataProvider;
+      use PHPUnit\Framework\TestCase;
+
+      final class FirstTestClassTest extends TestCase {
+
+            #[Test]
+            #[TestDox('Al Sumar el $num1 con $num2 el resultado es $expected')]
+            #[DataProvider('dataProvider')]
+            public function sumar(int $expected, int $num1, int $num2): void {
+
+                  $actual = $num1 + $num2;
+                  $this->assertSame($expected, $actual, "NO ES IDENTICA: La suma de $num1 con $num2 No puede ser $expected");
+            }
+
+            public static function dataProvider(){
+
+                  return [
+                        'data set 1' => [0, 0, 0],
+                        'data set 2' => [1, 0, 1],
+                        'data set 3' => [1, 1, 0],
+                        'data set 4' => [3, 1, 1]
+                  ];
+
+            }
+
+      }
+
+25. Ejecutar la prueba (bash): ./build.tests.sh
+

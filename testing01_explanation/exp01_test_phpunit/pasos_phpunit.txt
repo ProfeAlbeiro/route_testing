@@ -219,10 +219,10 @@ ________________________________________________________________________________
 38. Ejecutar (bash): Would you like to define your dependencies (require) interactively [yes]? no
 39. Ejecutar (bash): Would you like to define your dev dependencies (require-dev) interactively [yes]? yes
 40. Ejecutar (bash): Search for a package: phpunit
-44. Ejecutar (bash): Enter package # to add, or the complete package name if it is not listed: 0
-45. Ejecutar (bash): Enter the version constraint to require (or leave blank to use the latest version): [Enter]
-46. Ejecutar (bash): Search for a package: [Enter]
-47. Ejecutar (bash): Add PSR-4 autoload mapping? Maps namespace "Villa\Ex06InstalacionComposer" to the entered 
+41. Ejecutar (bash): Enter package # to add, or the complete package name if it is not listed: 0
+42. Ejecutar (bash): Enter the version constraint to require (or leave blank to use the latest version): [Enter]
+43. Ejecutar (bash): Search for a package: [Enter]
+44. Ejecutar (bash): Add PSR-4 autoload mapping? Maps namespace "Villa\Ex06InstalacionComposer" to the entered 
                      relative path. [src/, n to skip]: [Enter]
 
                         {
@@ -238,9 +238,9 @@ ________________________________________________________________________________
                               "require": {}
                         }
 
-48. Ejecutar (bash): Do you confirm generation [yes]? [Enter]
-49. Ejecutar (bash): Would you like to install dependencies now [yes]? [Enter]
-50. Modificar el archivo 'composer.json' de la siguiente forma:
+45. Ejecutar (bash): Do you confirm generation [yes]? [Enter]
+46. Ejecutar (bash): Would you like to install dependencies now [yes]? [Enter]
+47. Modificar el archivo 'composer.json' de la siguiente forma:
 
       {
             "name": "villa/ex06_instalacion_composer",
@@ -255,18 +255,22 @@ ________________________________________________________________________________
             "require": {}
       }
 
-51. Crear la carpeta 'tests' en la carpeta raíz y en su interior, las carpetas: 'unit' e 'integration'
-52. Crear el archivo 'build-tests.sh' con el siguiente código:
+48. Ejecutar (bash): composer dump-autoload
+    Para que composer reconozca que el directorio 'src' como namespace
+49. Crear la carpeta 'tests' en la carpeta raíz y en su interior, las carpetas: 'unit' e 'integration'
+50. Crear el archivo 'build.tests.sh' con el siguiente código:
 
       #!/bin/bash
       ./vendor/phpunit/phpunit/phpunit --testdox tests
+
+51. Ejecutar la prueba (bash): ./build.tests.sh
 
 ___________________________________________________________________________________________________________________
 
 -- VÍDEO 07: Assertions en PHPUnit
 ___________________________________________________________________________________________________________________
 
-53. Crear el archivo 'phpunit.xml' en la carpeta raíz, con el siguiente código:
+52. Crear el archivo 'phpunit.xml' en la carpeta raíz, con el siguiente código:
 
       <?xml version="1.0" encoding="UTF-8"?>
       <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -285,7 +289,7 @@ ________________________________________________________________________________
             </logging>
       </phpunit>
 
-54. Crear el archivo 'FirstTestClassTest.php' en la carpeta 'unit', con el siguiente código:
+53. Crear el archivo 'FirstTestClassTest.php' en la carpeta 'unit', con el siguiente código:
 
       <?php declare(strict_types=1);
 
@@ -305,14 +309,14 @@ ________________________________________________________________________________
 
       }
 
-55. Ejecutar la prueba (bash): ./build-tests.sh
+54. Ejecutar la prueba (bash): ./build.tests.sh
 
 ___________________________________________________________________________________________________________________
 
 -- VÍDEO 08: AssertTrue y AssertNotTrue en PHPUnit
 ___________________________________________________________________________________________________________________
 
-56. Crear el archivo 'AssertTrueClassTest.php' en la carpeta 'unit', con el siguiente código:
+55. Crear el archivo 'AssertTrueClassTest.php' en la carpeta 'unit', con el siguiente código:
 
       <?php declare(strict_types=1);
 
@@ -340,14 +344,14 @@ ________________________________________________________________________________
 
       }
 
-57. Ejecutar la prueba (bash): ./build-tests.sh
+56. Ejecutar la prueba (bash): ./build.tests.sh
 
 ___________________________________________________________________________________________________________________
 
 -- VÍDEO 09: AssertSame y AssertNotSame en PHPUnit
 ___________________________________________________________________________________________________________________
 
-58. Crear el archivo 'AssertSameClassTest.php' en la carpeta 'unit', con el siguiente código:
+57. Crear el archivo 'AssertSameClassTest.php' en la carpeta 'unit', con el siguiente código:
 
       <?php declare(strict_types=1);
 
@@ -375,14 +379,14 @@ ________________________________________________________________________________
 
       }
 
-59. Ejecutar la prueba (bash): ./build-tests.sh
+58. Ejecutar la prueba (bash): ./build.tests.sh
 
 ___________________________________________________________________________________________________________________
 
 -- VÍDEO 10: AssertEquals y AssertNotEquals en PHPUnit
 ___________________________________________________________________________________________________________________
 
-60. Crear el archivo 'AssertEqualsClassTest.php' en la carpeta 'unit', con el siguiente código:
+59. Crear el archivo 'AssertEqualsClassTest.php' en la carpeta 'unit', con el siguiente código:
 
       <?php declare(strict_types=1);
 
@@ -412,4 +416,4 @@ ________________________________________________________________________________
 
       }
 
-61. Ejecutar la prueba (bash): ./build-tests.sh
+60. Ejecutar la prueba (bash): ./build.tests.sh
