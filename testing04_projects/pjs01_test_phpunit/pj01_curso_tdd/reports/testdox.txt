@@ -1,6 +1,9 @@
-First Test Class
+First Testing
  [x] Al Sumar el 0 con 0 el resultado es 0
  [x] Al Sumar el 0 con 1 el resultado es 1
  [x] Al Sumar el 1 con 0 el resultado es 1
- [ ] Al Sumar el 1 con 1 el resultado es 3
+ [x] Al Sumar el 1 con 1 el resultado es 2
+
+Fizz Buzz
+ [x] Prueba de Fizz Buzz
 

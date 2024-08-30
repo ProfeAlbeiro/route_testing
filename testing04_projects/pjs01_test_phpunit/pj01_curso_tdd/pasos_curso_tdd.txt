@@ -72,18 +72,19 @@ ________________________________________________________________________________
 
       <?xml version="1.0" encoding="UTF-8"?>
       <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/|version|/phpunit.xsd">
+            xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/|version|/phpunit.xsd" 
+            bootstrap="vendor/autoload.php" colors="true">
             <testsuites>
                   <testsuite name="unit">
-                        <directory phpVersion="8.2.12" phpVersionOperator=">=">unit</directory>
+                        <directory phpVersion="8.2.12" phpVersionOperator=">=">tests/unit</directory>
                   </testsuite>
                   <testsuite name="integration">
-                        <directory phpVersion="8.2.12" phpVersionOperator=">=">integration</directory>
+                        <directory phpVersion="8.2.12" phpVersionOperator=">=">tests/integration</directory>
                   </testsuite>
             </testsuites>
-            <logging>
-                  <testdoxHtml outputFile="report/testdox.html"/>
-                  <testdoxText outputFile="report/testdox.txt"/>
+            <logging>        
+                  <testdoxHtml outputFile="reports/testdox.html"/>
+                  <testdoxText outputFile="reports/testdox.txt"/>
             </logging>
       </phpunit>
 
@@ -92,7 +93,7 @@ ________________________________________________________________________________
       #!/bin/bash
       ./vendor/phpunit/phpunit/phpunit --testdox tests
 
-24. Crear el archivo 'FirstTestClassTest.php' en la carpeta 'unit', con el siguiente código:
+24. Crear el archivo 'FirstTestingTest.php' en la carpeta 'tests/unit', con el siguiente código:
 
       <?php declare(strict_types=1);
 
@@ -101,19 +102,17 @@ ________________________________________________________________________________
       use PHPUnit\Framework\Attributes\DataProvider;
       use PHPUnit\Framework\TestCase;
 
-      final class FirstTestClassTest extends TestCase {
+      final class FirstTestingTest extends TestCase {
 
             #[Test]
             #[TestDox('Al Sumar el $num1 con $num2 el resultado es $expected')]
             #[DataProvider('dataProvider')]
             public function sumar(int $expected, int $num1, int $num2): void {
-
                   $actual = $num1 + $num2;
                   $this->assertSame($expected, $actual, "NO ES IDENTICA: La suma de $num1 con $num2 No puede ser $expected");
             }
 
-            public static function dataProvider(){
-
+            public static function dataProvider() {
                   return [
                         'data set 1' => [0, 0, 0],
                         'data set 2' => [1, 0, 1],
@@ -125,5 +124,62 @@ ________________________________________________________________________________
 
       }
 
-25. Ejecutar la prueba (bash): ./build.tests.sh
-26.
+25. Ejecutar (bash): ./build.tests.sh
+26. Crear el archivo 'FizzBuzzTest.php' en la carpeta 'tests/unit', con el siguiente código:
+
+      <?php declare(strict_types=1);
+
+      use PHPUnit\Framework\Attributes\Test;
+      use PHPUnit\Framework\Attributes\TestDox;
+      use PHPUnit\Framework\TestCase;
+      use Src\FizzBuzz;
+
+      final class FizzBuzzTest extends TestCase {
+            /** 
+            * Devuelve Fizz si el número es divisible por 3
+            * Devuelve Buzz si el número es divisible por 5
+            * Devuelve FizzBuzz si el número es divisible por 3 y 5
+            */
+            #[Test]
+            #[TestDox('Prueba de Fizz Buzz')]    
+            public function fizz_buzz(): void {
+                  // Setup
+                  $fb = new FizzBuzz();
+                  // Action
+                  $actual = $fb->generateOutput(15);
+                  // Assertion
+                  $expected = ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"];
+                  $this->assertEquals($expected, $actual,"NO ES IGUAL: Los arreglos no son iguales");
+            }
+
+      }
+
+27. Crear el archivo 'FizzBuzz.php' en la carpeta 'src', con el siguiente código:
+
+      <?php declare(strict_types=1);
+
+      namespace Src;
+
+      class FizzBuzz {
+      
+            public function generateOutput(int $n): array {
+                  $resp = [];	
+                  for ($i = 0; $i < $n; $i++){
+                        if (($i + 1) % 15 == 0) {
+                        array_push($resp, "FizzBuzz");
+                        } else if (($i + 1) % 3 == 0) {
+                        array_push($resp, "Fizz");
+                        } else if (($i + 1) % 5 == 0) {
+                        array_push($resp, "Buzz");
+                        } else {
+                        array_push($resp, $i + 1);                
+                        }
+                  }
+                  return $resp;
+            }
+
+      }
+
+28. Ejecutar (bash): ./build.tests.sh
+29. Instalar la extensión 'PHP All-in-One PHP'
+30. Dar clic en la opción del panel izquierdo denominado 'Testing' y ejecutar 
