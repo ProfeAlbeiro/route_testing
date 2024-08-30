@@ -68,6 +68,12 @@ ________________________________________________________________________________
 20. Ejecutar (bash): composer dump-autoload
     Se hace para que composer reconozca que el directorio 'src' como namespace
 21. Crear la carpeta 'tests' en la carpeta raíz y en su interior, las carpetas: 'unit' e 'integration'
+
+___________________________________________________________________________________________________________________
+
+-- VÍDEO 02: Prueba Unitaria con PHPUnit y TDD
+___________________________________________________________________________________________________________________
+
 22. Crear el archivo 'phpunit.xml' en la carpeta raíz, con el siguiente código:
 
       <?xml version="1.0" encoding="UTF-8"?>
@@ -181,5 +187,43 @@ ________________________________________________________________________________
       }
 
 28. Ejecutar (bash): ./build.tests.sh
-29. Instalar la extensión 'PHP All-in-One PHP'
-30. Dar clic en la opción del panel izquierdo denominado 'Testing' y ejecutar 
+
+___________________________________________________________________________________________________________________
+
+-- VÍDEO 03: Prueba Unitaria con PHPUnit y TDD
+___________________________________________________________________________________________________________________
+
+29. Refactorizar el código del archivo 'FizzBuzz.php', de la siguiente forma:
+
+      <?php declare(strict_types=1);
+
+      namespace Src;
+
+      class FizzBuzz {
+      
+            public function generateOutput(int $n) : array {
+                  $resp = [];	
+                  for ($i = 0; $i < $n; $i++){
+                        array_push($resp, $this->getValue($i+1));
+                  }
+                  return $resp;
+            }
+
+            private function getValue(int $n) : String {
+                  $str = $n;
+                  if ($n % 15 == 0) {
+                        $str = "FizzBuzz";
+                  } else if ($n % 3 == 0) {
+                        $str = "Fizz";
+                  } else if ($n % 5 == 0) {
+                        $str = "Buzz";
+                  } 
+                  return strval($str);
+            }
+
+      }
+
+30. Ejecutar (bash): ./build.tests.sh
+31. 
+XX. Instalar la extensión 'PHP All-in-One PHP'
+XX. Dar clic en la opción del panel izquierdo denominado 'Testing' y ejecutar 

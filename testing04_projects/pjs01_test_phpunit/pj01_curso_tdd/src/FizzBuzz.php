@@ -4,20 +4,24 @@ namespace Src;
 
 class FizzBuzz {
     
-    public function generateOutput(int $n): array {
+    public function generateOutput(int $n) : array {
         $resp = [];	
         for ($i = 0; $i < $n; $i++){
-            if (($i + 1) % 15 == 0) {
-                array_push($resp, "FizzBuzz");
-            } else if (($i + 1) % 3 == 0) {
-                array_push($resp, "Fizz");
-            } else if (($i + 1) % 5 == 0) {
-                array_push($resp, "Buzz");
-            } else {
-                array_push($resp, $i + 1);                
-            }
+            array_push($resp, $this->getValue($i+1));
         }
         return $resp;
+    }
+
+    private function getValue(int $n) : String {
+        $str = $n;
+        if ($n % 15 == 0) {
+            $str = "FizzBuzz";
+        } else if ($n % 3 == 0) {
+            $str = "Fizz";
+        } else if ($n % 5 == 0) {
+            $str = "Buzz";
+        } 
+        return strval($str);
     }
 
 }
