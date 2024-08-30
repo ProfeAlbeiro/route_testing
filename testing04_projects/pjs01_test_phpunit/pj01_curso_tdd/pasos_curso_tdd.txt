@@ -22,7 +22,7 @@ ________________________________________________________________________________
 13. Ejecutar (bash): Enter package # to add, or the complete package name if it is not listed: 0
 14. Ejecutar (bash): Enter the version constraint to require (or leave blank to use the latest version): [Enter]
 15. Ejecutar (bash): Search for a package: [Enter]
-16. Ejecutar (bash): Add PSR-4 autoload mapping? Maps namespace ""Villa\Pj01CursoTdd" to the entered 
+16. Ejecutar (bash): Add PSR-4 autoload mapping? Maps namespace ""Villa\Pj01CursoTdd" to the entered
                      relative path. [src/, n to skip]: [Enter]
 
                         {
@@ -81,7 +81,7 @@ ________________________________________________________________________________
                         <directory phpVersion="8.2.12" phpVersionOperator=">=">integration</directory>
                   </testsuite>
             </testsuites>
-            <logging>        
+            <logging>
                   <testdoxHtml outputFile="report/testdox.html"/>
                   <testdoxText outputFile="report/testdox.txt"/>
             </logging>
@@ -126,4 +126,4 @@ ________________________________________________________________________________
       }
 
 25. Ejecutar la prueba (bash): ./build.tests.sh
-
+26.
