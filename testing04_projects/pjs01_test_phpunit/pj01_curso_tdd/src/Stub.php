@@ -2,11 +2,20 @@
 
 namespace Src;
 
+use Src\Dependency;
+
 class Stub {
-    
-    public function doSomething() {
-        $resp = "hola";
-        return $resp;
+
+    public function doSomething(Dependency $dependency) {
+
+        $str = $dependency->doSomething();
+        $response = "";
+
+        if ($str == "foo") {
+            $response = "Válido";
+        }
+
+        return $response;
     }
 
 }

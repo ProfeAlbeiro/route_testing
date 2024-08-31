@@ -3,25 +3,25 @@
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
-use Src\FizzBuzz;
 use Src\Stub;
+use Src\Dependency;
 
-final class StubTest extends TestCase {    
+final class StubTest extends TestCase {
     #[Test]
-    #[TestDox('Prueba con Stub')]    
+    #[TestDox('Prueba con Stub')]
     public function test_sub(): void {
-        
+
         // Setup
         $stub = new Stub();
-        $dependency = $this-createStub(Dependency::class);
+        $dependency = $this->createStub(Dependency::class);
         $dependency->method('doSomething')->willReturn('foo');
 
         // Action
-        $result = $stub->doSomething($dependency);
-        
+        $response = $stub->doSomething($dependency);
+
         // Assertion
-        $expected = "foo";
-        $this->assertEquals($expected, $result, "");
+        $expected = "Válido";
+        $this->assertEquals($expected, $response, "");
     }
 
 }

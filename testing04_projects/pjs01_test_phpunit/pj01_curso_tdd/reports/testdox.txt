@@ -8,5 +8,5 @@ Fizz Buzz
  [x] Prueba de Fizz Buzz
 
 Stub
- [ ] Prueba con Stub
+ [x] Prueba con Stub
 

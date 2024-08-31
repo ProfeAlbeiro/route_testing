@@ -78,7 +78,7 @@ ________________________________________________________________________________
 
       <?xml version="1.0" encoding="UTF-8"?>
       <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/|version|/phpunit.xsd" 
+            xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/|version|/phpunit.xsd"
             bootstrap="vendor/autoload.php" colors="true">
             <testsuites>
                   <testsuite name="unit">
@@ -88,7 +88,7 @@ ________________________________________________________________________________
                         <directory phpVersion="8.2.12" phpVersionOperator=">=">tests/integration</directory>
                   </testsuite>
             </testsuites>
-            <logging>        
+            <logging>
                   <testdoxHtml outputFile="reports/testdox.html"/>
                   <testdoxText outputFile="reports/testdox.txt"/>
             </logging>
@@ -141,13 +141,13 @@ ________________________________________________________________________________
       use Src\FizzBuzz;
 
       final class FizzBuzzTest extends TestCase {
-            /** 
+            /**
             * Devuelve Fizz si el número es divisible por 3
             * Devuelve Buzz si el número es divisible por 5
             * Devuelve FizzBuzz si el número es divisible por 3 y 5
             */
             #[Test]
-            #[TestDox('Prueba de Fizz Buzz')]    
+            #[TestDox('Prueba de Fizz Buzz')]
             public function fizz_buzz(): void {
                   // Setup
                   $fb = new FizzBuzz();
@@ -167,9 +167,9 @@ ________________________________________________________________________________
       namespace Src;
 
       class FizzBuzz {
-      
+
             public function generateOutput(int $n): array {
-                  $resp = [];	
+                  $resp = [];
                   for ($i = 0; $i < $n; $i++){
                         if (($i + 1) % 15 == 0) {
                         array_push($resp, "FizzBuzz");
@@ -178,7 +178,7 @@ ________________________________________________________________________________
                         } else if (($i + 1) % 5 == 0) {
                         array_push($resp, "Buzz");
                         } else {
-                        array_push($resp, $i + 1);                
+                        array_push($resp, $i + 1);
                         }
                   }
                   return $resp;
@@ -200,9 +200,9 @@ ________________________________________________________________________________
       namespace Src;
 
       class FizzBuzz {
-      
+
             public function generateOutput(int $n) : array {
-                  $resp = [];	
+                  $resp = [];
                   for ($i = 0; $i < $n; $i++){
                         array_push($resp, $this->getValue($i+1));
                   }
@@ -217,13 +217,13 @@ ________________________________________________________________________________
                         $str = "Fizz";
                   } else if ($n % 5 == 0) {
                         $str = "Buzz";
-                  } 
+                  }
                   return strval($str);
             }
 
       }
 
 30. Ejecutar (bash): ./build.tests.sh
-31. 
+31.
 XX. Instalar la extensión 'PHP All-in-One PHP'
-XX. Dar clic en la opción del panel izquierdo denominado 'Testing' y ejecutar 
+XX. Dar clic en la opción del panel izquierdo denominado 'Testing' y ejecutar
